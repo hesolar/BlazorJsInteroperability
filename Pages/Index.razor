@@ -1,27 +1,35 @@
 ﻿@page "/"
 @inject IJSRuntime jsruntime;
+@inject NavigationManager NavigationManager
 
-<h1>Hello, world!</h1>
+<h1>Datos  Estudiantes Erasmus</h1>
 
-Welcome to your new app.
-
-<h1> Porcentaje estudiantes por paises </h1>
+<h3> Porcentaje estudiantes por paises </h3>
 <div hidden="@visiblePie" id="piechartdiv" class="chartdiv"></div>
 <button @onclick="()=>visiblePie=!visiblePie">Hide/show</button>
 
-<h1>Paises destino de Erasmus </h1>
+<h3>Paises destino de Erasmus </h3>
 <div hidden="@visibleBars" id="barschartdiv" class="chartdiv"></div>
 <button @onclick="()=>visibleBars=!visibleBars">Hide/show</button>
 
-<h1>Rutas más comunes de acceso entre los estudiantes extranjeros </h1>
+<h3>Rutas más comunes de acceso entre los estudiantes extranjeros </h3>
 <div hidden="@visibleCountries" id="countrieschartdiv" class="chartdiv"></div>
 <button @onclick="()=>visibleCountries=!visibleCountries">Hide/show</button>
+
+
+<h3>Sexo estudiantes Erasmus </h3>
+<div hidden="@copadiv" id="copadiv" class="chartdiv"></div>
+<button @onclick="()=>copadiv=!copadiv">Hide/show</button>
+
+
+<button @onclick="NextPage"> ir a la siguiente pagina </button>
 
 
 @code{
     public bool visiblePie = false;
     public bool visibleBars = false;
     public bool visibleCountries = false;
+    public bool copadiv = false;
 
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -29,6 +37,12 @@ Welcome to your new app.
         await jsruntime.InvokeVoidAsync("GeneratePieChart");
         await jsruntime.InvokeVoidAsync("GenerateBars");
         await jsruntime.InvokeVoidAsync("Countries");
+        await jsruntime.InvokeVoidAsync("Sexos");
+    }
+    public void NextPage()
+    {
+
+        NavigationManager.NavigateTo("/SecondPage");
     }
 
 
