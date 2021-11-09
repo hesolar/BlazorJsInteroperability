@@ -3,8 +3,8 @@
     google.charts.setOnLoadCallback(initChart);
 
     function initChart() {
-        var xs = [1,2,3,4,5];
-        var ys = [5,10,15,20,25];
+        var ys = [500,450,600,700,670];
+        var xs = [200,400,600,800,1000];
         window.createNewChart({ xs, ys });
     }
 
@@ -23,7 +23,7 @@
         var options = {
             hAxis: { title: 'Horizontal Axis Label' },
             vAxis: { title: 'Vertical Axis Label' },
-            title: 'This is a Google Chart in Blazor',
+            title: 'Nuevos alumnos en la universidad',
             legend: { position: 'none' },
         };
 
