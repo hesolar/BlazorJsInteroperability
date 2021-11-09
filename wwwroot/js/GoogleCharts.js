@@ -36,6 +36,56 @@
 
 
 }
+function GoogleRegions() {
 
-//<script src="js/bootstrap.bundle.min.js"></script>
-//    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    google.charts.load('current', {
+        'packages': ['geochart'],
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+}
+    function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Popularity'],
+            ['Germany', 12],
+            ['United States', 1],
+            ['Canada', 5],
+            ['France', 20],
+            ['RU', 2],
+            ['Spain',30]
+        ]);
+
+        var options = {};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+}
+function GoogleComboChart() {
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawVisualization);
+
+    
+}
+
+function drawVisualization() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable([
+        ['Month', 'Matemáticas', 'Magisterio', 'Derecho', 'Ingeniería Mecánica', 'Informática', 'Filología'],
+        ['2016/17', 15, 90, 90, 18, 28, 82],
+        ['2017/18', 20, 10, 50, 87, 37, 63],
+        ['2018/19', 70, 10, 65, 98, 15, 60],
+        ['2019/20', 110, 90, 60, 100, 36, 56],
+        ['2020/21', 15, 30, 80, 92, 45, 61]
+    ]);
+
+    var options = {
+        title: 'Alumnos matriculados en los grados',
+        vAxis: { title: 'Alumnos' },
+        hAxis: { title: 'Años' },
+        seriesType: 'bars',
+        series: { 5: { type: 'line' } }
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('googleCombo'));
+    chart.draw(data, options);
+}
