@@ -4,7 +4,7 @@
 
     function initChart() {
         var ys = [500,450,600,700,670];
-        var xs = [200,400,600,800,1000];
+        var xs = [1999,2003,2007,2011,2015,2004,2005];
         window.createNewChart({ xs, ys });
     }
 
@@ -21,8 +21,8 @@
         }
 
         var options = {
-            hAxis: { title: 'Horizontal Axis Label' },
-            vAxis: { title: 'Vertical Axis Label' },
+            hAxis: { title: 'Años' },
+            vAxis: { title: 'Alumnos' },
             title: 'Nuevos alumnos en la universidad',
             legend: { position: 'none' },
         };
