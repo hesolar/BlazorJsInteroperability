@@ -1,0 +1,25 @@
+﻿@page "/"
+@inject IJSRuntime jsruntime; 
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<h1> Porcentaje estudiantes por paises </h1>
+<div hidden="@visiblePie" id="chartdiv"></div>
+<button @onclick="()=>visiblePie=!visiblePie">Hide/show</button>
+
+
+
+
+@code{
+    public bool visiblePie = false;
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await jsruntime.InvokeVoidAsync("GeneratePieChart");
+    }
+
+
+}
