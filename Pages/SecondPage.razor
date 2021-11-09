@@ -1,6 +1,14 @@
 ﻿@page "/SecondPage"
+@inject IJSRuntime jsruntime;
+
 <h3>SecondPage</h3>
+<div id="chart_div"></div>
+
 
 @code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await jsruntime.InvokeVoidAsync("googleCharts");
 
+    }
 }
